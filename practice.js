@@ -7,15 +7,21 @@
 
 //Code here
 function greeting(name) {
-  return `Hello, ${name}`
+  return "Hello, " + name;
 }
-
+greeting("Trogdor");
 //////////////////PROBLEM 2////////////////////
 
 //Rewrite the function greeting as a function expression.
 //Name it newGreeting.
 
 //Code Here
+
+const newGreeting = function (name) {
+  return "Hello, " + name;
+}
+
+newGreeting("Bob");
 
 //////////////////PROBLEM 3////////////////////
 
@@ -24,12 +30,16 @@ function greeting(name) {
 
 //Code Here
 
+const finalGreeting = name => "Hello, " + name;
+
 //////////////////PROBLEM 4////////////////////
 
 //Create an array called groceries with the values
 //"apples", "milk", "eggs", "bread"
 
 //Code Here
+
+const groceries = ["apples", "milk", "eggs", "bread"]
 
 //Write a function called doubleCheck that takes in an array
 //as a parameter.
@@ -38,6 +48,17 @@ function greeting(name) {
 //doubleCheck should return the array.
 
 //Code Here
+
+function doubleCheck(arr) {
+  const hasChocolate = arr.includes('chocolate')
+  if (!hasChocolate) {
+    arr.push('chocolate');
+  }
+  return arr;
+}
+doubleCheck(groceries);
+
+
 
 //////////////////PROBLEM 5////////////////////
 
@@ -48,19 +69,33 @@ function greeting(name) {
 
 //Code Here
 
+const dog = {
+  name: "Bubble",
+  color: "brindle",
+  age: 7,
+  goodBoy: true
+}
+
 //...access the dog's name from the object and assign it to a
 //variable called devMountainClassPet.
 
 //Code Here
+const devMountainClassPet = dog.name;
 
 //Add a method to dog called bark.
 //The value of bark should be a function that returns the string "Woof woof".
 
 //Code Here
 
+dog.bark = function () {
+  return "Woof woof";
+}
+
+dog.bark();
 //Store the result of invoking the bark method in a variable called ruff.
 
 //Code Here
+const ruff = dog.bark();
 
 //////////////////PROBLEM 6////////////////////
 
@@ -75,6 +110,17 @@ function greeting(name) {
 
 //Code Here
 
+function looper(arr) {
+  var mySum = 0;
+  arr.forEach(function (val) {
+    if (val % 2 !== 0 || val >= 100) {
+      mySum += val
+    }
+  })
+  return mySum;
+}
+
+
 //////////////////PROBLEM 7////////////////////
 
 //Given the following function called math
@@ -88,10 +134,16 @@ function math(num1, num2, callback) {
 
 //Code Here
 
+function add(num1, num2) {
+  return num1 + num2;
+}
+
 //Now invoke math, passing in the numbers 3 and 4, and your add function,
 //storing the result in the variable mathSum.
 
 //Code Here
+
+var mathSum = math(3, 4, add);
 
 //////////////////PROBLEM 8////////////////////
 
@@ -107,6 +159,10 @@ function sampleCallbackTwo() {
 }
 
 //Code Here
+
+function invoker(callback) {
+  return callback();
+}
 
 //////////////////PROBLEM 9////////////////////
 
@@ -130,16 +186,16 @@ function pond() {
 //as strings.
 
 //This array should contain the variable names (as strings) accessible in the global scope.
-let globalScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let globalScope = ["duck"];
 
 //This array should contain the variable names (as strings) accessible in the bathroom function.
-let bathroomScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let bathroomScope = ["rubberDuck", "duck"];
 
 //This array should contain the variable names (as strings) accessible in the bathtub function.
-let bathtubScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let bathtubScope = ["duck", "sailorDuck", "rubberDuck"];
 
 //This array should contain the variable names (as strings) accessible in the pond function.
-let pondScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
+let pondScope = ["duck", "realDuck"];
 
 //////////////////PROBLEM 10////////////////////
 
@@ -148,10 +204,21 @@ let pondScope = ["duck", "sailorDuck", "rubberDuck", "realDuck"];
 
 //Code Here
 
+function outerFn() {
+  return function () {
+    return "Damo";
+  }
+}
+
 //Now save the result of invoking outerFn into a variable called innerFn.
 
 //Code Here
 
+const innerFn = outerFn();
+innerFn("Damo");
+
 //Now invoke innerFn and save the result to a variable called finalResult.
 
 //Code Here
+
+const finalResult = innerFn();
